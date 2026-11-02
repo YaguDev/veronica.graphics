@@ -1,0 +1,38 @@
+---
+import ArrowUpRight from '@gravity-ui/icons/svgs/arrow-up-right.svg';
+import flower3 from '../assets/botanical/Flor-003-loader.webp';
+import flower4 from '../assets/botanical/Flor-004-loader.webp';
+import flower5 from '../assets/botanical/Flor-005-loader.webp';
+const flowers = [flower3, flower4, flower5];
+---
+<div class="intro-loader paper-texture" aria-label="Cargando portafolio" role="dialog" aria-modal="true" tabindex="-1">
+  <div class="intro-loader__center">
+    <span class="eyebrow">Diseño gráfico · Portafolio</span>
+    <div class="intro-loader__flowers" aria-hidden="true">
+      {flowers.map(flower => <img src={flower.src} width={flower.width} height={flower.height} alt="" loading="eager" decoding="async" />)}
+    </div>
+    <p class="intro-loader__name">Verónica<span>.</span></p>
+    <div class="intro-loader__track" aria-hidden="true"><span></span></div>
+    <p class="intro-loader__status" role="status">Preparando una nueva mirada</p>
+  </div>
+  <button class="intro-loader__skip" type="button">Entrar <ArrowUpRight width="16" height="16" aria-hidden="true" /></button>
+</div>
+<style>
+  .intro-loader { display: none; position: fixed; inset: 0; z-index: 100; background-color: var(--red); color: var(--cream); place-items: center; text-align: center; --paper-opacity: .52; }
+  :global(html[data-intro-pending]) .intro-loader { display: grid; }
+  .intro-loader__center { width: min(80%, 420px); }
+  .intro-loader__flowers { position: relative; width: clamp(120px, 20vh, 180px); aspect-ratio: 1; margin: 28px auto 18px; }
+  .intro-loader__flowers img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; }
+  .intro-loader__flowers img:first-child { opacity: 1; }
+  :global(html[data-intro-pending]) .intro-loader__flowers img { animation: flower-cycle 1.8s linear infinite; }
+  :global(html[data-intro-pending]) .intro-loader__flowers img:nth-child(2) { animation-delay: -1.2s; }
+  :global(html[data-intro-pending]) .intro-loader__flowers img:nth-child(3) { animation-delay: -.6s; }
+  @keyframes flower-cycle { 0%, 25% { opacity: 1; transform: rotate(0deg) scale(1); } 33%, 92% { opacity: 0; transform: rotate(5deg) scale(.96); } 100% { opacity: 1; transform: rotate(0deg) scale(1); } }
+  @media (prefers-reduced-motion: reduce) { :global(html[data-intro-pending]) .intro-loader__flowers img { animation: none; } }
+  .intro-loader__name { margin: 0 0 28px; font: italic 500 clamp(56px, 9vw, 82px)/1 var(--font-editorial); letter-spacing: -.05em; }
+  .intro-loader__track { height: 1px; background: rgb(251 243 231 / .3); overflow: hidden; width: 160px; margin-inline: auto; }
+  .intro-loader__track span { display: block; height: 100%; background: var(--cream); transform: scaleX(0); transform-origin: left; }
+  .intro-loader__status { margin: 20px 0 0; font-size: 11px; letter-spacing: .06em; }
+  .intro-loader__skip { position: absolute; right: var(--page-gutter); bottom: 32px; padding: 12px; border: 0; background: none; color: inherit; font: inherit; font-size: 13px; cursor: pointer; }
+  .intro-loader__skip { display: inline-flex; align-items: center; gap: 12px; }
+</style>

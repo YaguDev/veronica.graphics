@@ -1,0 +1,20 @@
+<section class="projects paper-texture" id="proyectos" aria-labelledby="projects-title">
+  <div class="projects__inner">
+    <div class="section-caption"><span>02 / Proyectos</span><span>Una selección personal</span></div>
+    <div class="projects__content" data-reveal>
+      <h2 id="projects-title">Ideas que<br /><em>toman forma.</em></h2>
+      <div class="projects__upcoming"><span class="eyebrow">Próximamente</span><p>Estoy preparando una selección de mis proyectos. Pronto encontrarás aquí sus colores, sus historias y todo lo que hay detrás.</p><span class="projects__line" aria-hidden="true"></span></div>
+    </div>
+  </div>
+</section>
+<style>
+  .projects { background-color: var(--red); color: var(--cream); padding: 100px var(--page-gutter); --paper-opacity: .52; }
+  .projects__inner { max-width: 1400px; margin-inline: auto; }
+  .projects__content { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 12%; margin-top: 50px; }
+  h2 { margin: 0; font: 500 clamp(58px, 7.5vw, 110px)/.95 var(--font-editorial); letter-spacing: -.045em; }
+  h2 em { font-weight: inherit; }
+  .projects__upcoming { max-width: 340px; }
+  .projects__upcoming p { margin: 20px 0 28px; font-size: 14px; line-height: 1.8; }
+  .projects__line { display: block; height: 1px; width: 60px; background: currentColor; }
+  @media (max-width: 700px) { .projects { padding-block: 74px 64px; } .section-caption span:last-child { display: none; } .projects__content { grid-template-columns: 1fr; gap: 40px; margin-top: 35px; } }
+</style>

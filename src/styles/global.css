@@ -1,0 +1,39 @@
+@import '@fontsource-variable/inter/wght.css';
+@import '@fontsource/cormorant-garamond/latin-500.css';
+@import '@fontsource/cormorant-garamond/latin-500-italic.css';
+
+:root {
+  --red: #e84533;
+  --cream: #fbf3e7;
+  --ink: #342d29;
+  --muted: #645b52;
+  --red-ink: #b73224;
+  --font-editorial: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter Variable', Arial, sans-serif;
+  --page-gutter: clamp(24px, 4.5vw, 86px);
+  color: var(--ink);
+  background: var(--red);
+  font-family: var(--font-body);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+svg { flex-shrink: 0; }
+::selection { color: var(--cream); background: var(--red-ink); }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+main:focus { outline: none; }
+.paper-texture { isolation: isolate; }
+.paper-texture::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('../assets/textures/paper.webp') repeat; background-size: 640px 640px; mix-blend-mode: multiply; opacity: var(--paper-opacity, .45); pointer-events: none; }
+.projects, .contact { position: relative; }
+.eyebrow { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; line-height: 1.5; }
+.section-caption { display: flex; justify-content: space-between; gap: 24px; font-size: 11px; line-height: 1.5; letter-spacing: .06em; }
+.section-caption > span:first-child { text-transform: uppercase; letter-spacing: .12em; }
+.skip-link { position: fixed; z-index: 110; top: 12px; left: 12px; padding: 12px 18px; background: var(--cream); color: var(--ink); transform: translateY(-180%); }
+.skip-link:focus { transform: translateY(0); }
+html[data-intro-pending] { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { :root { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }

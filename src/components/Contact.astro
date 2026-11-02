@@ -1,0 +1,29 @@
+---
+import ArrowUpRight from '@gravity-ui/icons/svgs/arrow-up-right.svg';
+import ArrowUp from '@gravity-ui/icons/svgs/arrow-up.svg';
+---
+<footer class="contact paper-texture" id="contacto" aria-labelledby="contact-title">
+  <div class="contact__inner">
+    <div class="section-caption"><span>03 / Contacto</span><span>Las buenas ideas empiezan conversando</span></div>
+    <div class="contact__main" data-reveal>
+      <h2 id="contact-title">Hagamos algo<br /><em>hermoso.</em></h2>
+      <div class="contact__links"><p>¿Tienes una idea en mente?</p><a class="contact__email" href="#">Conversemos <ArrowUpRight width="22" height="22" aria-hidden="true" /></a><div class="contact__socials"><a href="#">Behance <ArrowUpRight width="14" height="14" aria-hidden="true" /></a><a href="#">Instagram <ArrowUpRight width="14" height="14" aria-hidden="true" /></a></div></div>
+    </div>
+    <div class="contact__bottom"><span>Verónica · Diseño gráfico</span><span>Hecho con intención.</span><a href="#inicio">Volver arriba <ArrowUp width="15" height="15" aria-hidden="true" /></a></div>
+  </div>
+</footer>
+<style>
+  .contact { padding: 44px var(--page-gutter) 24px; background-color: var(--cream); --paper-opacity: .4; }
+  .contact__inner { max-width: 1400px; margin-inline: auto; }
+  .contact__main { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 12%; padding-block: 60px 70px; }
+  h2 { color: var(--red); font: 500 clamp(60px, 7.5vw, 110px)/.93 var(--font-editorial); letter-spacing: -.045em; margin: 0; }
+  h2 em { font-weight: inherit; }
+  .contact__links p { font-size: 13px; margin: 0 0 18px; }
+  .contact__email { display: inline-flex; align-items: center; justify-content: space-between; gap: 40px; padding-bottom: 10px; color: var(--red-ink); border-bottom: 1px solid currentColor; font-size: 24px; }
+  .contact__socials { display: flex; gap: 28px; margin-top: 28px; font-size: 12px; }
+  .contact__socials a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .contact__socials a { display: inline-flex; align-items: center; gap: 6px; }
+  .contact__bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid rgb(232 69 51 / .35); padding-top: 20px; font-size: 11px; }
+  .contact__bottom a { display: inline-flex; align-items: center; gap: 10px; min-height: 32px; }
+  @media (max-width: 700px) { .section-caption span:last-child { display: none; } .contact__main { grid-template-columns: 1fr; gap: 40px; padding-block: 40px 50px; } .contact__bottom { flex-wrap: wrap; font-size: 10px; } .contact__bottom > span:nth-child(2) { display: none; } }
+</style>

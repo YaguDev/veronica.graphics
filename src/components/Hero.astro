@@ -1,318 +1,65 @@
 ---
-import { Image } from 'astro:assets';
-import portrait from '../assets/hero/veronica.webp';
-import creamFlower from '../assets/hero/flor-crema.webp';
-import coralFlower from '../assets/hero/hibisco-coral.webp';
-import stemFlower from '../assets/hero/flor-tallo.webp';
-import yellowFlower from '../assets/hero/flor-amarilla.webp';
-import coralSprig from '../assets/hero/ramita-coral.webp';
-import openLeaves from '../assets/hero/hojas-abiertas.webp';
-import tallLeaves from '../assets/hero/hojas-altas.webp';
-import daisy from '../assets/hero/margarita-rosa.webp';
-
-// Coordinates follow the 977 × 459 px Hero in the supplied reference.
-// Each illustration keeps its own wrapper so GSAP never overwrites its rotation.
-const botanicals = [
-  { image: tallLeaves, x: -24, y: -98, width: 74, rotation: -39, layer: 1 },
-  { image: coralSprig, x: -10, y: -40, width: 75, rotation: 105, layer: 1 },
-  { image: openLeaves, x: 173, y: -51, width: 177, rotation: -12, layer: 1 },
-  { image: tallLeaves, x: 137, y: 27, width: 75, rotation: -39, layer: 1 },
-  { image: coralSprig, x: 145, y: 23, width: 86, rotation: -68, layer: 1 },
-  { image: creamFlower, x: 195, y: 18, width: 137, rotation: -13, layer: 2 },
-  { image: tallLeaves, x: 432, y: 6, width: 104, rotation: -15, layer: 1 },
-  { image: coralSprig, x: 474, y: 17, width: 70, rotation: 3, layer: 1 },
-  { image: openLeaves, x: -70, y: 107, width: 204, rotation: 8, layer: 1 },
-  { image: tallLeaves, x: -14, y: 236, width: 115, rotation: -67, layer: 1 },
-  { image: openLeaves, x: 419, y: 150, width: 161, rotation: 36, layer: 1 },
-  { image: yellowFlower, x: 467, y: 217, width: 139, rotation: 22, layer: 2 },
-  { image: tallLeaves, x: 502, y: 305, width: 98, rotation: -39, layer: 1 },
-  { image: coralSprig, x: 85, y: 272, width: 108, rotation: 35, layer: 2 },
-  { image: coralSprig, x: 60, y: 174, width: 42, rotation: -12, layer: 2 },
-  { image: openLeaves, x: 67, y: 325, width: 208, rotation: -75, layer: 4 },
-  { image: coralFlower, x: 178, y: 320, width: 166, rotation: -13, layer: 6 },
-  { image: daisy, x: -35, y: 355, width: 103, rotation: -13, layer: 4 },
-  { image: openLeaves, x: 802, y: -78, width: 198, rotation: 100, layer: 1, corner: true },
-  { image: stemFlower, x: 857, y: -45, width: 150, rotation: -40, layer: 2, corner: true },
-  { image: openLeaves, x: 745, y: 350, width: 240, rotation: 12, layer: 1, corner: true },
-];
+import ArrowDown from '@gravity-ui/icons/svgs/arrow-down.svg';
+import PortfolioTitle from './PortfolioTitle.astro';
+import flowerLeft from '../assets/botanical/Flor-001.webp';
+import flowerRight from '../assets/botanical/Flor-004.webp';
+import leaves from '../assets/botanical/Hojas-001.webp';
+import topLeaves from '../assets/botanical/Hojas-002.webp';
 ---
-
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero__stage">
-    <div class="hero__art">
-      {botanicals.map(({ image, x, y, width, rotation, layer, corner }) => (
-        <div
-          class:list={['hero__botanical', { 'hero__botanical--corner': corner }]}
-          style={`--x:${x / 977 * 100}%;--y:${y / 459 * 100}%;--width:${width / 977 * 100}%;--rotation:${rotation}deg;--layer:${layer};`}
-          aria-hidden="true"
-        >
-          <Image
-            src={image}
-            alt=""
-            widths={[160, 320, 640]}
-            sizes={`(max-width: 760px) ${Math.ceil(width / 977 * 160)}vw, (min-width: 1600px) ${Math.ceil(width / 977 * 1600)}px, ${Math.ceil(width / 977 * 100)}vw`}
-            format="webp"
-            loading="eager"
-            draggable="false"
-          />
-        </div>
-      ))}
-
-      <p class="hero__wordmark" aria-label="Portafolio">
-        <span aria-hidden="true">PORTA</span>
-        <span aria-hidden="true">FOLIO</span>
-      </p>
-
-      <div class="hero__portrait">
-        <Image
-          src={portrait}
-          alt="Retrato de Verónica, diseñadora gráfica"
-          widths={[360, 680, 1023]}
-          sizes="(max-width: 760px) 62vw, (min-width: 1600px) 620px, 39vw"
-          format="webp"
-          loading="eager"
-          fetchpriority="high"
-          draggable="false"
-        />
-      </div>
-    </div>
-
-    <div class="hero__intro">
-      <p class="hero__greeting" data-hero-reveal>HOLA, SOY</p>
-      <h1 class="hero__name" id="hero-title" data-hero-reveal><span>VERÓNICA</span></h1>
-      <p class="hero__role" data-hero-reveal>DISEÑADORA GRÁFICA</p>
-      <p class="hero__description" data-hero-reveal>
-        Diseñadora gráfica con experiencia en estampados, piezas para redes sociales
-        y catálogos. Me interesa la ilustración aplicada al diseño textil, la creación
-        de patrones, el color y el diseño editorial. Busco aportar propuestas visuales
-        con identidad, funcionalidad y criterio gráfico.
-      </p>
-      <a class="hero__projects" href="#proyectos" data-hero-reveal>PROYECTOS</a>
-    </div>
+<section class="hero paper-texture" id="inicio" aria-labelledby="hero-title">
+  <div class="hero__frame" aria-hidden="true"></div>
+  <div class="hero__artwork" aria-hidden="true">
+    <div class="hero__botanical hero__botanical--top" data-botanical="top"><img src={topLeaves.src} width={topLeaves.width} height={topLeaves.height} alt="" decoding="async" /></div>
+    <div class="hero__botanical hero__botanical--left" data-botanical="left"><img src={flowerLeft.src} width={flowerLeft.width} height={flowerLeft.height} alt="" decoding="async" /></div>
+    <div class="hero__botanical hero__botanical--right" data-botanical="right"><img src={flowerRight.src} width={flowerRight.width} height={flowerRight.height} alt="" decoding="async" /></div>
+    <div class="hero__botanical hero__botanical--leaves" data-botanical="right"><img src={leaves.src} width={leaves.width} height={leaves.height} alt="" decoding="async" /></div>
   </div>
-  <div class="hero__color-band" aria-hidden="true"></div>
+  <div class="hero__center">
+    <p class="eyebrow hero__eyebrow" data-intro-item>Una mirada sensible. Ideas con identidad.</p>
+    <PortfolioTitle />
+    <p class="hero__discipline" data-intro-item>Diseño gráfico</p>
+  </div>
+  <div class="hero__bottom" data-intro-item>
+    <span class="hero__note">El diseño también<br />es una forma de sentir.</span>
+    <a class="hero__scroll" href="#sobre-mi"><span>Conóceme</span><span class="hero__arrow"><ArrowDown width="18" height="18" aria-hidden="true" /></span></a>
+    <span class="hero__edition">Portafolio personal<br />Verónica · Diseño gráfico</span>
+  </div>
 </section>
-
 <style>
-  .hero {
-    overflow: clip;
-    background: #f3e9d8;
-  }
-
-  .hero__stage {
-    position: relative;
-    isolation: isolate;
-    max-width: 1600px;
-    aspect-ratio: 977 / 459;
-    margin-inline: auto;
-    container-type: inline-size;
-    /* Let flowers cross the centered content boundary on wide screens.
-       The full-width .hero clips them at the actual edges of the section. */
-  }
-
-  .hero__art {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  .hero__botanical {
-    position: absolute;
-    left: var(--x);
-    top: var(--y);
-    width: var(--width);
-    z-index: var(--layer);
-  }
-
-  .hero__botanical img {
-    display: block;
-    width: 100%;
-    height: auto;
-    transform: rotate(var(--rotation));
-  }
-
-  .hero__wordmark {
-    position: absolute;
-    z-index: 3;
-    top: 20.5%;
-    left: 3.6%;
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: 14.55cqw;
-    font-weight: 400;
-    line-height: 0.89;
-    letter-spacing: -0.045em;
-  }
-
-  .hero__wordmark span {
-    display: block;
-  }
-
-  .hero__portrait {
-    position: absolute;
-    z-index: 5;
-    width: 38.7%;
-    left: 21.1%;
-    top: 7.2%;
-  }
-
-  .hero__portrait img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  .hero__intro {
-    position: absolute;
-    z-index: 7;
-    top: 24.8%;
-    left: 62.7%;
-    width: 30%;
-  }
-
-  .hero__greeting {
-    margin: 0 0 0.65cqw;
-    font-size: 2.46cqw;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.04em;
-  }
-
-  .hero__name {
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: 6.75cqw;
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-
-  .hero__name span {
-    display: block;
-  }
-
-  .hero__role {
-    margin: 0.25cqw 0 1.45cqw;
-    font-size: 1.25cqw;
-    font-weight: 600;
-    line-height: 1.3;
-    letter-spacing: 0.23em;
-  }
-
-  .hero__description {
-    margin: 0;
-    font-family: var(--font-body);
-    font-size: 0.99cqw;
-    font-weight: 500;
-    line-height: 1.27;
-  }
-
-  .hero__projects {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 14.45cqw;
-    min-height: 3.58cqw;
-    margin: 2.1cqw 0 0;
-    border: 1px solid currentColor;
-    color: inherit;
-    font-size: 1.08cqw;
-    font-weight: 700;
-    text-decoration: none;
-    transition: color 180ms ease, background-color 180ms ease;
-  }
-
-  .hero__projects:hover {
-    background: #1e1c1c;
-    color: #f3e9d8;
-  }
-
-  .hero__projects:focus-visible {
-    outline: 2px solid currentColor;
-    outline-offset: 5px;
-  }
-
-  .hero__color-band {
-    position: relative;
-    z-index: 8;
-    height: clamp(24px, 4.095vw, 64px);
-    background: #eaa591;
-  }
-
-  @media (max-width: 760px) {
-    .hero__stage { aspect-ratio: auto; }
-
-    .hero__art {
-      position: relative;
-      inset: auto;
-      width: 160%;
-      aspect-ratio: 977 / 459;
-      overflow: clip;
-    }
-
-    .hero__botanical--corner { display: none; }
-    .hero__wordmark { font-size: 23.28cqw; }
-
-    .hero__intro {
-      position: relative;
-      inset: auto;
-      width: auto;
-      max-width: 460px;
-      padding: 30px 24px 38px;
-      margin-inline: auto;
-    }
-
-    .hero__greeting { margin-bottom: 6px; font-size: 22px; }
-    .hero__name { font-size: clamp(54px, 12cqw, 72px); }
-    .hero__role { margin: 6px 0 20px; font-size: 12px; letter-spacing: 0.2em; }
-    .hero__description { font-size: 14px; line-height: 1.6; }
-    .hero__projects { width: 150px; min-height: 44px; margin: 24px 0 0; font-size: 12px; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero__projects { transition: none; }
+  .hero { position: relative; display: flex; flex-direction: column; justify-content: center; min-height: 650px; height: 90svh; max-height: 1050px; padding: 130px var(--page-gutter) 140px; background-color: var(--red); color: var(--cream); overflow: clip; --paper-opacity: .52; }
+  .hero__frame { position: absolute; inset: 100px 20px 20px; border: 1px solid rgb(251 243 231 / .35); pointer-events: none; border-radius: 20px;}
+  .hero__center { position: relative; width: 100%; max-width: 1500px; margin-inline: auto; text-align: center; }
+  .hero__eyebrow { margin: 0 0 32px; }
+  .hero__discipline { margin: clamp(42px, 4vw, 64px) 0 0; font-size: clamp(13px, 1.25vw, 18px); letter-spacing: .4em; text-transform: uppercase; }
+  .hero__artwork { position: absolute; inset: 0; pointer-events: none; }
+  .hero__botanical { position: absolute; opacity: .48; }
+  .hero__botanical img { display: block; width: 100%; height: auto; }
+  .hero__botanical--top { width: clamp(170px, 15vw, 240px); left: 24%; top: -220px; opacity: .38; }
+  .hero__botanical--top img { transform: rotate(125deg); }
+  .hero__botanical--left { width: clamp(240px, 28vw, 460px); left: -6%; bottom: -15%; }
+  .hero__botanical--left img { transform: rotate(24deg); }
+  .hero__botanical--right { width: clamp(255px, 30vw, 490px); right: -6%; top: 12%; opacity: .42; }
+  .hero__botanical--right img { transform: rotate(-22deg); }
+  .hero__botanical--leaves { width: clamp(190px, 21vw, 340px); right: 17%; bottom: -17%; opacity: .32; }
+  .hero__botanical--leaves img { transform: rotate(-30deg); }
+  .hero__bottom { position: absolute; left: var(--page-gutter); right: var(--page-gutter); bottom: 50px; display: flex; justify-content: space-between; align-items: end; gap: 24px; font-size: 12px; line-height: 1.6; }
+  .hero__note { font-style: italic; }
+  .hero__edition { text-align: right; }
+  .hero__scroll { display: flex; align-items: center; gap: 14px; }
+  .hero__arrow { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid rgb(251 243 231 / .6); border-radius: 50%; transition: background .25s, color .25s; }
+  .hero__scroll:hover .hero__arrow { background: var(--cream); color: var(--red); }
+  @media (min-width: 1800px) { .hero__frame { inset-inline: 32px; } }
+  @media (max-width: 600px) {
+    .hero { height: 80svh; min-height: 520px; max-height: 740px; padding: 120px 24px 140px; }
+    .hero__frame { inset: 86px 10px 12px; }
+    .hero__eyebrow { max-width: 240px; margin: 0 auto 28px; font-size: 10px; line-height: 1.8; }
+    .hero__discipline { font-size: 12px; letter-spacing: .3em; margin-top: 28px; }
+    .hero__bottom { bottom: 36px; font-size: 10px; }
+    .hero__edition { display: none; }
+    .hero__scroll { gap: 10px; font-size: 12px; }
+    .hero__botanical--left { width: 190px; left: -90px; bottom: -25px; opacity: .38; }
+    .hero__botanical--right { width: 205px; right: -90px; top: 90px; opacity: .35; }
+    .hero__botanical--leaves { display: none; }
+    .hero__botanical--top { display: none; }
   }
 </style>
-
-<script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const hero = document.querySelector<HTMLElement>('.hero');
-
-  if (hero) {
-    const motion = gsap.matchMedia();
-
-    // Visible HTML is the default: the composition also works without JavaScript.
-    motion.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.timeline({
-        defaults: { ease: 'power3.out', duration: 1, clearProps: 'transform,opacity,clipPath' },
-      })
-        .from('.hero__wordmark', { y: 24, clipPath: 'inset(100% 0 0 0)' }, 0.15)
-        .from('.hero__botanical', { y: 24, opacity: 0, stagger: 0.018 }, 0.15)
-        .from('.hero__portrait img', { y: 32, opacity: 0 }, 0.3)
-        .from('[data-hero-reveal]', { y: 16, opacity: 0, duration: 0.75, stagger: 0.07 }, 0.5);
-    }, hero);
-
-    // The exit follows real page scroll; no pinned section or artificial scroll space.
-    // Separate targets prevent the scroll and entrance timelines from competing.
-    motion.add('(prefers-reduced-motion: no-preference) and (min-width: 761px)', () => {
-      gsap.timeline({
-        defaults: { ease: 'none' },
-        scrollTrigger: {
-          trigger: hero,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.6,
-          invalidateOnRefresh: true,
-        },
-      })
-        .to('.hero__art', { yPercent: -6, opacity: 0.55 }, 0)
-        .to('.hero__intro', { y: -25, opacity: 0.3 }, 0);
-    }, hero);
-
-    document.addEventListener('astro:before-swap', () => motion.revert(), { once: true });
-  }
-</script>
