@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import Loader from '../components/Loader.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
@@ -23,6 +24,7 @@ import displayFont from '@fontsource/cormorant-garamond/files/cormorant-garamond
     <link rel="preload" as="font" type="font/woff2" href={displayFont} crossorigin />
     <link rel="preload" as="image" href={paperUrl} />
     <title>Verónica — Diseño gráfico &amp; Portafolio</title>
+    <ClientRouter />
     <script is:inline>
       // Fail open if the animation bundle cannot load.
       (() => {

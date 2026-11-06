@@ -1,20 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import ArrowUpRight from '@gravity-ui/icons/svgs/arrow-up-right.svg';
+import { projects } from '../data/projects';
+---
 <section class="projects paper-texture" id="proyectos" aria-labelledby="projects-title">
   <div class="projects__inner">
     <div class="section-caption"><span>02 / Proyectos</span><span>Una selección personal</span></div>
-    <div class="projects__content" data-reveal>
-      <h2 id="projects-title">Ideas que<br /><em>toman forma.</em></h2>
-      <div class="projects__upcoming"><span class="eyebrow">Próximamente</span><p>Estoy preparando una selección de mis proyectos. Pronto encontrarás aquí sus colores, sus historias y todo lo que hay detrás.</p><span class="projects__line" aria-hidden="true"></span></div>
+    <h2 id="projects-title">Ideas que <em>toman forma.</em></h2>
+    <div class="projects__grid">
+      {projects.map(project => (
+        <a class="project-card" href={`/proyectos/${project.slug}/`} aria-label={`Ver proyecto ${project.name}`}>
+          <div class="project-card__image" transition:name={`${project.slug}-cover`}>
+            <Image src={project.cover} alt={project.coverAlt} widths={[480, 800, 1200, 1800]} sizes="(max-width: 700px) 90vw, 75vw" format="webp" quality={84} loading="lazy" />
+          </div>
+          <div class="project-card__info">
+            <div><h3>{project.name}</h3><p>{project.category}</p></div>
+            <span class="project-card__arrow" aria-hidden="true"><ArrowUpRight width="26" height="26" /></span>
+          </div>
+        </a>
+      ))}
     </div>
   </div>
 </section>
 <style>
   .projects { background-color: var(--red); color: var(--cream); padding: 100px var(--page-gutter); --paper-opacity: .52; }
   .projects__inner { max-width: 1400px; margin-inline: auto; }
-  .projects__content { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 12%; margin-top: 50px; }
-  h2 { margin: 0; font: 500 clamp(58px, 7.5vw, 110px)/.95 var(--font-editorial); letter-spacing: -.045em; }
+  h2 { font: 500 clamp(52px, 6vw, 90px)/1 var(--font-editorial); letter-spacing: -.04em; margin: 40px 0 48px; }
   h2 em { font-weight: inherit; }
-  .projects__upcoming { max-width: 340px; }
-  .projects__upcoming p { margin: 20px 0 28px; font-size: 14px; line-height: 1.8; }
-  .projects__line { display: block; height: 1px; width: 60px; background: currentColor; }
-  @media (max-width: 700px) { .projects { padding-block: 74px 64px; } .section-caption span:last-child { display: none; } .projects__content { grid-template-columns: 1fr; gap: 40px; margin-top: 35px; } }
+  .projects__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 32px; }
+  .project-card:only-child { grid-column: 1 / -1; }
+  .project-card__image { height: clamp(340px, 42vw, 590px); overflow: hidden; border-radius: 24px; background: #eee9e3; }
+  .project-card__image img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .6s ease; }
+  .project-card:hover img { transform: scale(1.035); }
+  .project-card__info { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 4px 0; }
+  h3 { font: 500 clamp(30px, 3vw, 44px)/1.1 var(--font-editorial); margin: 0; }
+  .project-card__info p { margin: 9px 0 0; font-size: 12px; }
+  .project-card__arrow { display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; width: 52px; height: 52px; }
+  @media (max-width: 700px) { .projects { padding-block: 74px 64px; } .projects__grid { grid-template-columns: 1fr; } .section-caption span:last-child { display: none; } h2 { margin-block: 32px; } .project-card__image { height: auto; aspect-ratio: 1; } }
 </style>
