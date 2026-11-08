@@ -35,6 +35,9 @@ function initializePage() {
           .from('[data-intro-item]', { y: 12, opacity: 0, duration: .8, stagger: .1 }, entranceDelay + .35)
           .from('.site-header', { y: -10, opacity: 0, duration: .65 }, entranceDelay + .3);
       }
+      if (document.querySelector('[data-project-title]')) {
+        gsap.from('[data-project-title] .title-letter', { y: 24, opacity: 0, rotate: 3, duration: .8, stagger: .035, ease: 'power3.out', clearProps: 'transform,opacity' });
+      }
       gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach(element => {
         gsap.from(element, { y: 26, opacity: 0, duration: .85, ease: 'power2.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: element, start: 'top 94%', once: true } });
       });

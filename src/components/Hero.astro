@@ -1,4 +1,6 @@
 ---
+import { i18n } from '../i18n';
+const { lang, t, home, projectPath } = i18n(Astro.url);
 import ArrowDown from '@gravity-ui/icons/svgs/arrow-down.svg';
 import PortfolioTitle from './PortfolioTitle.astro';
 import flowerLeft from '../assets/botanical/Flor-001.webp';
@@ -15,14 +17,14 @@ import topLeaves from '../assets/botanical/Hojas-002.webp';
     <div class="hero__botanical hero__botanical--leaves" data-botanical="right"><img src={leaves.src} width={leaves.width} height={leaves.height} alt="" decoding="async" /></div>
   </div>
   <div class="hero__center">
-    <p class="eyebrow hero__eyebrow" data-intro-item>Una mirada sensible. Ideas con identidad.</p>
+    <p class="eyebrow hero__eyebrow" data-intro-item>{t("Una mirada sensible. Ideas con identidad.")}</p>
     <PortfolioTitle />
-    <p class="hero__discipline" data-intro-item>Diseño gráfico</p>
+    <p class="hero__discipline" data-intro-item>{t("Diseño gráfico")}</p>
   </div>
   <div class="hero__bottom" data-intro-item>
-    <span class="hero__note">El diseño también<br />es una forma de sentir.</span>
-    <a class="hero__scroll" href="#sobre-mi"><span>Conóceme</span><span class="hero__arrow"><ArrowDown width="18" height="18" aria-hidden="true" /></span></a>
-    <span class="hero__edition">Portafolio personal<br />Verónica · Diseño gráfico</span>
+    <span class="hero__note">{t("El diseño también")}<br />{t("es una forma de sentir.")}</span>
+    <a class="hero__scroll" href="#sobre-mi"><span>{t("Conóceme")}</span><span class="hero__arrow"><ArrowDown width="18" height="18" aria-hidden="true" /></span></a>
+    <span class="hero__edition">{t("Portafolio personal")}<br />{t("Verónica · Diseño gráfico")}</span>
   </div>
 </section>
 <style>
@@ -50,8 +52,8 @@ import topLeaves from '../assets/botanical/Hojas-002.webp';
   .hero__scroll:hover .hero__arrow { background: var(--cream); color: var(--red); }
   @media (min-width: 1800px) { .hero__frame { inset-inline: 32px; } }
   @media (max-width: 600px) {
-    .hero { height: 80svh; min-height: 520px; max-height: 740px; padding: 120px 24px 140px; }
-    .hero__frame { inset: 86px 10px 12px; }
+    .hero { height: 80svh; min-height: 520px; max-height: 740px; padding: 158px 24px 140px; }
+    .hero__frame { inset: 128px 10px 12px; }
     .hero__eyebrow { max-width: 240px; margin: 0 auto 28px; font-size: 10px; line-height: 1.8; }
     .hero__discipline { font-size: 12px; letter-spacing: .3em; margin-top: 28px; }
     .hero__bottom { bottom: 36px; font-size: 10px; }

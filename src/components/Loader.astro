@@ -1,21 +1,23 @@
 ---
+import { i18n } from '../i18n';
+const { lang, t, home, projectPath } = i18n(Astro.url);
 import ArrowUpRight from '@gravity-ui/icons/svgs/arrow-up-right.svg';
 import flower3 from '../assets/botanical/Flor-003-loader.webp';
 import flower4 from '../assets/botanical/Flor-004-loader.webp';
 import flower5 from '../assets/botanical/Flor-005-loader.webp';
 const flowers = [flower3, flower4, flower5];
 ---
-<div class="intro-loader paper-texture" aria-label="Cargando portafolio" role="dialog" aria-modal="true" tabindex="-1">
+<div class="intro-loader paper-texture" aria-label={t("Cargando portafolio")} role="dialog" aria-modal="true" tabindex="-1">
   <div class="intro-loader__center">
-    <span class="eyebrow">Diseño gráfico · Portafolio</span>
+    <span class="eyebrow">{t("Diseño gráfico · Portafolio")}</span>
     <div class="intro-loader__flowers" aria-hidden="true">
       {flowers.map(flower => <img src={flower.src} width={flower.width} height={flower.height} alt="" loading="eager" decoding="async" />)}
     </div>
     <p class="intro-loader__name">Verónica<span>.</span></p>
     <div class="intro-loader__track" aria-hidden="true"><span></span></div>
-    <p class="intro-loader__status" role="status">Preparando una nueva mirada</p>
+    <p class="intro-loader__status" role="status">{t("Preparando una nueva mirada")}</p>
   </div>
-  <button class="intro-loader__skip" type="button">Entrar <ArrowUpRight width="16" height="16" aria-hidden="true" /></button>
+  <button class="intro-loader__skip" type="button">{t("Entrar")} <ArrowUpRight width="16" height="16" aria-hidden="true" /></button>
 </div>
 <style>
   .intro-loader { display: none; position: fixed; inset: 0; z-index: 100; background-color: var(--red); color: var(--cream); place-items: center; text-align: center; --paper-opacity: .52; }

@@ -1,27 +1,49 @@
 ---
+import { i18n, localizedPath } from '../i18n';
+const { lang, t, home, projectPath } = i18n(Astro.url);
 import ArrowUpRight from '@gravity-ui/icons/svgs/arrow-up-right.svg';
 ---
 <header class="site-header">
-  <a class="brand" href="/#inicio" aria-label="Verónica — Inicio">Verónica<span aria-hidden="true">.</span></a>
-  <nav aria-label="Navegación principal">
-    <a href="/#sobre-mi">Sobre mí</a>
-    <a href="/#proyectos">Proyectos</a>
-    <a href="/#contacto">Contacto <ArrowUpRight width="13" height="13" aria-hidden="true" /></a>
+  <a class="brand" href={home + "#inicio"} aria-label={t("Verónica — Inicio")}>Verónica<span aria-hidden="true">.</span></a>
+  <nav aria-label={t("Navegación principal")}>
+    <a href={home + "#sobre-mi"}>{t("Sobre mí")}</a>
+    <a href={home + "#proyectos"}>{t("Proyectos")}</a>
+    <a class="button-outline" href={home + "#contacto"}>{t("Contacto")} <ArrowUpRight width="13" height="13" aria-hidden="true" /></a>
   </nav>
+  <div class="language-switch" role="group" aria-label={lang === 'es' ? 'Idioma' : 'Language'}>
+    {(['es', 'en'] as const).map(locale => locale === lang
+      ? <span class="language-switch__active" aria-current="true">{locale.toUpperCase()}</span>
+      : <a data-language-link href={localizedPath(Astro.url.pathname, locale)} hreflang={locale} lang={locale} aria-label={locale === 'en' ? 'Switch to English' : 'Cambiar a español'}>{locale.toUpperCase()}</a>)}
+  </div>
 </header>
+<script>
+  function syncLanguageLinks() {
+    document.querySelectorAll<HTMLAnchorElement>('[data-language-link]').forEach(link => {
+      link.hash = window.location.hash;
+    });
+  }
+  document.addEventListener('astro:page-load', syncLanguageLinks);
+  window.addEventListener('hashchange', syncLanguageLinks);
+</script>
 <style>
   .site-header { position: absolute; z-index: 10; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; min-height: 100px; padding: 20px var(--page-gutter); color: var(--cream); }
+  .language-switch { display: inline-flex; align-items: center; gap: 2px; border: 1px solid currentColor; border-radius: 999px; margin-left: 24px; font-size: 12px; }
+  .language-switch a, .language-switch span { display: grid; place-items: center; min-width: 36px; min-height: 36px; border-radius: 999px; }
+  .language-switch__active { background: color-mix(in srgb, currentColor 18%, transparent); font-weight: 650; }
+  .language-switch a:hover { text-decoration: underline; text-underline-offset: 4px; }
   .brand { font: 500 36px/1 var(--font-editorial); letter-spacing: -.05em; }
-  nav { display: flex; align-items: center; gap: clamp(24px, 3.5vw, 56px); }
-  nav a { font-size: 14px; padding-block: 12px; }
+  nav { margin-left: auto; display: flex; align-items: center; gap: clamp(24px, 3.5vw, 56px); }
+  nav a { font-size: 14px; padding-block: 12px; white-space: nowrap; }
   nav a :global(svg) { vertical-align: middle; }
-  nav a::after { content: ''; display: block; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
-  nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); }
+  nav a:not(.button-outline)::after { content: ''; display: block; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+  nav a:not(.button-outline):hover::after, nav a:not(.button-outline):focus-visible::after { transform: scaleX(1); }
   @media (max-width: 600px) {
-    .site-header { min-height: 86px; gap: 14px; padding-block: 16px; }
-    .brand { font-size: 29px; }
-    nav { gap: 16px; }
-    nav a { font-size: 12px; }
+    .site-header { min-height: 114px; gap: 10px; padding: 12px 20px; flex-wrap: wrap; }
+    .brand { font-size: 27px; }
+    .language-switch { margin-left: auto; }
+    nav { order: 3; width: 100%; justify-content: space-between; gap: 12px; }
+    nav .button-outline { padding-inline: 8px; gap: 5px; }
+    nav a { font-size: 11px; }
   }
-  @media (max-width: 360px) { .brand { font-size: 25px; } nav { gap: 11px; } nav a { font-size: 11px; } }
+  @media (max-width: 360px) { .brand { font-size: 25px; } nav { gap: 8px; } nav a { font-size: 11px; } }
 </style>

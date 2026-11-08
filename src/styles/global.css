@@ -39,3 +39,7 @@ main:focus { outline: none; }
 .skip-link:focus { transform: translateY(0); }
 html[data-intro-pending] { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { :root { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+
+.button-outline { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 11px 18px; border: 1px solid currentColor; border-radius: 999px; line-height: 1.2; transition: background-color .2s ease, transform .2s ease; }
+.button-outline:hover { background-color: color-mix(in srgb, currentColor 10%, transparent); transform: translateY(-2px); }
+.button-outline:active { transform: translateY(0); }

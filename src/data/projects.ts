@@ -1,3 +1,4 @@
+import { translator, type Language } from '../i18n';
 import SinapsiaLogo from '../assets/projects/sinapsia/logo.svg';
 import sinapsiaBanner from '../assets/projects/sinapsia/banner.webp';
 import sinapsiaOpenBook from '../assets/projects/sinapsia/libro-abierto.webp';
@@ -52,7 +53,7 @@ export const projects = [{
   description: 'Amaranto Café es un proyecto de rediseño de identidad visual desarrollado para un emprendimiento de Mercados Campesinos de Medellín. La propuesta busca transformar su identidad original en una marca más limpia, legible y versátil, conservando la silueta de su fundador e incorporando elementos inspirados en las abejas y la polinización, que representan su historia y conexión con la naturaleza.',
   role: 'Investigación, desarrollo del concepto creativo, rediseño del logotipo, diseño de etiquetas y desarrollo de la identidad visual.',
   collaborators: 'Proyecto realizado en equipo con Sara y Santiago.',
-  software: 'Procreate, Photoshop e Illustrator',
+  software: ['Procreate', 'Photoshop', 'Illustrator'] as const,
   gallery: [
     { image: aprons, alt: 'Delantales de Amaranto en tonos café y crema con el logotipo bordado', caption: 'La identidad en el día a día.', wide: true },
     { image: cap, alt: 'Gorra burdeos con el logotipo de Amaranto Company bordado en crema', caption: 'Gorra bordada.', wide: false },
@@ -63,7 +64,7 @@ export const projects = [{
   logo: BubbleLogo,
   color: '#E35C13',
   ink: '#9C3B08',
-  panelInk: '#3B210F',
+  panelInk: '#FFFFFF',
   storyLead: 'Una identidad',
   storyTitle: 'con efervescencia.',
   conceptLead: 'Ingredientes que',
@@ -79,7 +80,7 @@ export const projects = [{
   description: 'Bubble Bug es un proyecto académico para el Festival de Sabores Exóticos que propone una soda botánica artesanal de ginger bug, frutas y plantas aromáticas. Su identidad visual, fresca y dinámica, se inspira en las burbujas, los ingredientes naturales y la fermentación, reflejando el carácter innovador de la bebida.',
   role: 'Investigación, conceptualización creativa, diseño de logotipo y desarrollo de la identidad visual.',
   collaborators: 'Proyecto realizado en equipo con Paulina Alvarez.',
-  software: 'Procreate, Photoshop e Illustrator',
+  software: ['Procreate', 'Photoshop', 'Illustrator'] as const,
   gallery: [
     { image: bubbleLabel, alt: 'Etiqueta Bubble Bug con ilustraciones de frutas y plantas aromáticas', caption: 'Los ingredientes dan forma a la identidad.', wide: true },
     { image: bubbleBottle, alt: 'Botella de soda Bubble Bug con cierre mecánico e ingredientes naturales', caption: 'Identidad aplicada a la botella.', wide: false },
@@ -94,8 +95,8 @@ export const projects = [{
   logo: EllasLogo,
   color: '#00B3D5',
   ink: '#005B70',
-  panelInk: '#102B40',
-  logoInk: '#102B40',
+  panelInk: '#FFFFFF',
+  logoInk: '#FFFFFF',
   storyLead: 'Un álbum',
   storyTitle: 'que cuenta historias.',
   conceptLead: 'Historias que',
@@ -111,7 +112,7 @@ export const projects = [{
   description: 'ELLAS es un proyecto académico de diseño editorial que visibiliza y celebra a mujeres colombianas destacadas en la historia, el arte, la cultura y el deporte. A través de un álbum de pegatinas coleccionables, combina ilustración e investigación para presentar sus historias y logros de forma visual, educativa e interactiva.',
   role: 'Investigación, conceptualización creativa, diseño de logotipo, empaques e ilustraciones line art.',
   collaborators: 'Proyecto realizado en equipo con Sara Orrego y Santiago Uribe.',
-  software: 'InDesign, Photoshop e Illustrator',
+  software: ['InDesign', 'Photoshop', 'Illustrator'] as const,
   gallery: [
     { image: ellasOpenBook, alt: 'Álbum Ellas abierto con sus páginas e ilustraciones de mujeres colombianas', caption: 'Historias que se descubren página a página.', wide: true },
     { image: ellasBook, alt: 'Portada del álbum Ellas en tonos rosa con retratos ilustrados', caption: 'El álbum coleccionable.', wide: false },
@@ -140,7 +141,7 @@ export const projects = [{
   description: 'Entre Pasadizos es un proyecto académico que reinventa el juego tradicional de Policías y Ladrones como un juego de mesa estratégico para adultos mayores. Inspirado en las leyendas suizas, combina fantasía medieval, estrategia y lujo artístico.',
   role: 'Investigación, conceptualización creativa, diseño de logotipo y desarrollo de la identidad visual.',
   collaborators: 'Proyecto realizado en equipo con Paulina Alvarez y Palma Llano.',
-  software: 'Procreate, Photoshop e Illustrator',
+  software: ['Procreate', 'Photoshop', 'Illustrator'] as const,
   gallery: [
     { image: pasadizosPackaging, alt: 'Dos vistas del empaque de Entre Pasadizos con ilustraciones de dragones', caption: 'El empaque abre la puerta a la aventura.', wide: false },
     { image: pasadizosMap, alt: 'Tablero de Entre Pasadizos con rutas y casillas sobre un mapa de estilo antiguo', caption: 'Un mapa para trazar la estrategia.', wide: false },
@@ -168,10 +169,22 @@ export const projects = [{
   description: 'SINAPSIA es un proyecto académico de diseño editorial enfocado en la divulgación científica de especies marinas y sus beneficios para la salud y el bienestar. Su propuesta visual combina una estética moderna y limpia con composiciones dinámicas, recursos gráficos y una diagramación que busca transformar la información científica en una experiencia de lectura atractiva y accesible.',
   role: 'Investigación, conceptualización creativa, diseño de logotipo y desarrollo de la identidad visual. Proyecto individual.',
   collaborators: null,
-  software: 'InDesign, Photoshop e Illustrator',
+  software: ['InDesign', 'Photoshop', 'Illustrator'] as const,
   gallery: [
     { image: sinapsiaOpenBook, alt: 'Revista SINAPSIA abierta mostrando su portada sobre sardinas y una página publicitaria', caption: 'Una mirada editorial al mundo marino.', wide: true },
     { image: sinapsiaPageOne, alt: 'Doble página de SINAPSIA con una ilustración de un calamar y su artículo', caption: 'Ilustración y contenido en diálogo.', wide: false },
     { image: sinapsiaPageTwo, alt: 'Doble página de SINAPSIA con una ilustración de una sardina y su artículo', caption: 'Composiciones que acompañan la lectura.', wide: false },
   ],
 }];
+
+export function getProjects(lang: Language) {
+  const t = translator(lang);
+  return projects.map(project => ({ ...project,
+    category: t(project.category), title: t(project.title), coverAlt: t(project.coverAlt),
+    storyLead: t(project.storyLead), storyTitle: t(project.storyTitle),
+    conceptLead: t(project.conceptLead), conceptTitle: t(project.conceptTitle), concept: t(project.concept),
+    galleryLead: t(project.galleryLead), galleryTitle: t(project.galleryTitle),
+    description: t(project.description), role: t(project.role), collaborators: project.collaborators ? t(project.collaborators) : null,
+    gallery: project.gallery.map(item => ({ ...item, alt: t(item.alt), caption: t(item.caption) })),
+  }));
+}

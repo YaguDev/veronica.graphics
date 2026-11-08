@@ -1,44 +1,41 @@
 ---
+import { i18n } from '../i18n';
+const { lang, t, home, projectPath } = i18n(Astro.url);
 import { Image } from 'astro:assets';
 import portrait from '../assets/hero/veronica.webp';
-import Pencil from '@gravity-ui/icons/svgs/pencil.svg';
+import BrandIcon from './BrandIcon.astro';
 import ArrowUpRight from '@gravity-ui/icons/svgs/arrow-up-right.svg';
-const tools = [
-  { symbol: 'Ai', name: 'Illustrator' },
-  { symbol: 'Ps', name: 'Photoshop' },
-  { symbol: null, name: 'Ilustración digital' },
-  { symbol: 'Id', name: 'InDesign' },
-];
+const tools = ['Illustrator', 'Photoshop', 'Procreate', 'InDesign'] as const;
 ---
 <section class="about paper-texture" id="sobre-mi" aria-labelledby="about-title">
-  <div class="section-caption"><span>01 / Sobre mí</span><span>La persona detrás de las ideas</span></div>
+  <div class="section-caption"><span>{t("01 / Sobre mí")}</span><span>{t("La persona detrás de las ideas")}</span></div>
   <div class="about__sheet">
     <div class="about__portrait-column">
-      <div class="about__hello" data-reveal><h2 id="about-title">¡Hola!</h2><p>Soy Verónica</p></div>
+      <div class="about__hello" data-reveal><h2 id="about-title">{t("¡Hola!")}</h2><p>{t("Soy Verónica")}</p></div>
       <div class="about__portrait" data-portrait>
-        <Image src={portrait} alt="Verónica, diseñadora gráfica" widths={[360, 640, 960]} sizes="(max-width: 700px) min(92vw, 360px), (max-width: 1100px) min(44vw, 450px), 450px" format="webp" loading="eager" decoding="async" />
+        <Image src={portrait} alt={t("Verónica, diseñadora gráfica")} widths={[360, 640, 960]} sizes="(max-width: 700px) min(92vw, 360px), (max-width: 1100px) min(44vw, 450px), 450px" format="webp" loading="eager" decoding="async" />
       </div>
     </div>
     <div class="about__story">
       <div data-reveal>
-        <h3>Sobre mí</h3>
-        <p>Estudiante de Diseño Gráfico interesada en la comunicación visual y en explorar diferentes áreas del diseño.</p>
-        <p>Durante mi formación he desarrollado proyectos de identidad visual y branding, diseño editorial, contenido para medios digitales y diseño aplicado, fortaleciendo mis habilidades en composición, color y desarrollo de propuestas gráficas.</p>
+        <h3>{t("Sobre mí")}</h3>
+        <p>{t("Estudiante de Diseño Gráfico interesada en la comunicación visual y en explorar diferentes áreas del diseño.")}</p>
+        <p>{t("Durante mi formación he desarrollado proyectos de identidad visual y branding, diseño editorial, contenido para medios digitales y diseño aplicado, fortaleciendo mis habilidades en composición, color y desarrollo de propuestas gráficas.")}</p>
       </div>
       <div class="about__education" data-reveal>
-        <h3>Educación</h3>
-        <div class="education-entry"><span class="education-entry__date">2023 — 2026</span><p>Estudiante de Diseño Gráfico<br /><span>Institución Universitaria Pascual Bravo</span></p></div>
-        <div class="education-entry"><span class="education-entry__date">2012</span><p>Técnico en Pre-prensa Digital<br /><span>SENA</span></p></div>
+        <h3>{t("Educación")}</h3>
+        <div class="education-entry"><span class="education-entry__date">2023 — 2026</span><p>{t("Estudiante de Diseño Gráfico")}<br /><span>Institución Universitaria Pascual Bravo</span></p></div>
+        <div class="education-entry"><span class="education-entry__date">2012</span><p>{t("Técnico en Pre-prensa Digital")}<br /><span>SENA</span></p></div>
       </div>
     </div>
     <div class="about__skills" data-reveal>
-      <h3>Herramientas</h3>
-      <ul>{tools.map(({ symbol, name }) => (<li><span class="tool-mark" aria-hidden="true">{symbol || <Pencil width="27" height="27" />}</span><span>{name}</span></li>))}</ul>
+      <h3>{t("Herramientas")}</h3>
+      <ul>{tools.map(name => (<li><span class="tool-mark"><BrandIcon name={name} size={47} /></span><span>{name}</span></li>))}</ul>
     </div>
     <div class="about__socials" data-reveal>
-      <a href="#">Behance <ArrowUpRight width="14" height="14" aria-hidden="true" /></a>
-      <a href="#">Instagram <ArrowUpRight width="14" height="14" aria-hidden="true" /></a>
-      <a href="#">Correo <ArrowUpRight width="14" height="14" aria-hidden="true" /></a>
+      <a href="#"><BrandIcon name="Behance" /> Behance <ArrowUpRight width="14" height="14" aria-hidden="true" /></a>
+      <a href="#"><BrandIcon name="Instagram" /> Instagram <ArrowUpRight width="14" height="14" aria-hidden="true" /></a>
+      <a href="#"><BrandIcon name="Correo" /> {t("Correo")} <ArrowUpRight width="14" height="14" aria-hidden="true" /></a>
     </div>
   </div>
 </section>
@@ -74,7 +71,8 @@ const tools = [
   .about__skills h3 { font-size: 30px; }
   .about__skills ul { display: flex; flex-direction: column; gap: 20px; list-style: none; padding: 0; margin: 24px 0 0; }
   .about__skills li { display: flex; align-items: center; gap: 12px; font-size: 11px; line-height: 1.4; }
-  .tool-mark { width: 47px; height: 47px; flex-shrink: 0; border-radius: 11px; background: var(--red); color: var(--cream); display: grid; place-items: center; font-size: 26px; font-weight: 650; letter-spacing: -.04em; }
+  .tool-mark { width: 47px; height: 47px; flex-shrink: 0; border-radius: 11px; color: var(--red-ink); display: grid; place-items: center; font-size: 26px; font-weight: 650; letter-spacing: -.04em; }
+  .tool-mark :global(svg) { width: 100%; height: 100%; }
   .about__socials { grid-column: 2 / 4; display: flex; flex-wrap: wrap; gap: 28px; align-self: end; padding-top: 26px; margin-top: 12px; border-top: 1px solid rgb(232 69 51 / .3); }
   .about__socials a { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--red-ink); }
   .about__socials a:hover { text-decoration: underline; text-underline-offset: 4px; }

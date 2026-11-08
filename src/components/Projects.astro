@@ -1,15 +1,18 @@
 ---
+import { i18n } from '../i18n';
+const { lang, t, home, projectPath } = i18n(Astro.url);
 import { Image } from 'astro:assets';
 import ArrowUpRight from '@gravity-ui/icons/svgs/arrow-up-right.svg';
-import { projects } from '../data/projects';
+import { getProjects } from '../data/projects';
+const projects = getProjects(lang);
 ---
 <section class="projects paper-texture" id="proyectos" aria-labelledby="projects-title">
   <div class="projects__inner">
-    <div class="section-caption"><span>02 / Proyectos</span><span>Una selección personal</span></div>
-    <h2 id="projects-title">Ideas que <em>toman forma.</em></h2>
+    <div class="section-caption"><span>{t("02 / Proyectos")}</span><span>{t("Una selección personal")}</span></div>
+    <h2 id="projects-title">{t("Ideas que")} <em>{t("toman forma.")}</em></h2>
     <div class="projects__grid">
       {projects.map(project => (
-        <a class="project-card" href={`/proyectos/${project.slug}/`} aria-label={`Ver proyecto ${project.name}`}>
+        <a class="project-card" href={projectPath(project.slug)} aria-label={`${t("Ver proyecto")} ${project.name}`}>
           <div class="project-card__image" transition:name={`${project.slug}-cover`}>
             <Image src={project.cover} alt={project.coverAlt} widths={[480, 800, 1200, Math.min(1800, project.cover.width)]} sizes={projects.length === 1 ? '90vw' : '(max-width: 700px) 90vw, 44vw'} format="webp" quality={84} loading="lazy" />
           </div>
