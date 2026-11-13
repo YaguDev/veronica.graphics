@@ -1,3 +1,18 @@
+import DolusLogo from '../assets/projects/dolus-divinus/logo.svg';
+import dolus0 from '../assets/projects/dolus-divinus/banner.webp';
+import dolus1 from '../assets/projects/dolus-divinus/libro-001-afad7824.webp';
+import dolus2 from '../assets/projects/dolus-divinus/libro-002-7485982b.webp';
+import dolus3 from '../assets/projects/dolus-divinus/libro-003-33d7953e.webp';
+import dolus4 from '../assets/projects/dolus-divinus/libro-004-d6427e68.webp';
+import SereiaLogo from '../assets/projects/sereia/logo.svg';
+import sereia0 from '../assets/projects/sereia/banner-001.webp';
+import sereia1 from '../assets/projects/sereia/etiquetas.webp';
+import sereia2 from '../assets/projects/sereia/bolsa-001.webp';
+import sereia3 from '../assets/projects/sereia/caja-001.webp';
+import sereia4 from '../assets/projects/sereia/papel-001.webp';
+import sereia5 from '../assets/projects/sereia/tarjeta-001.webp';
+import sereia6 from '../assets/projects/sereia/redes-001.webp';
+import sereia7 from '../assets/projects/sereia/redes-002.webp';
 import { translator, type Language } from '../i18n';
 import SinapsiaLogo from '../assets/projects/sinapsia/logo.svg';
 import sinapsiaBanner from '../assets/projects/sinapsia/banner.webp';
@@ -175,6 +190,36 @@ export const projects = [{
     { image: sinapsiaPageOne, alt: 'Doble página de SINAPSIA con una ilustración de un calamar y su artículo', caption: 'Ilustración y contenido en diálogo.', wide: false },
     { image: sinapsiaPageTwo, alt: 'Doble página de SINAPSIA con una ilustración de una sardina y su artículo', caption: 'Composiciones que acompañan la lectura.', wide: false },
   ],
+}, {
+ slug: 'sereia', logo: SereiaLogo, name: 'SEREIA', color: '#09383B', ink: '#09383B', panelInk: '#FBF3E7',
+ category: 'Diseño de identidad visual',
+ storyLead: "Elegancia con", storyTitle: "alma de mar.",
+ conceptLead: "El ritmo del mar,", conceptTitle: "en cada trazo.",
+ galleryLead: "Una experiencia", galleryTitle: "que envuelve.",
+ title: "Moda de playa, a tu manera.", cover: sereia0, coverAlt: "Vitrina de SEREIA con el logotipo blanco, vegetación y trajes de baño en verde",
+ description: "SEREIA es una identidad visual para una marca premium de ropa de playa y trajes de baño para mujeres. Su propuesta combina la serenidad del verde profundo con tonos arena y terracota, creando un universo cálido y sofisticado. Las curvas del logotipo, los motivos marinos y las líneas onduladas conectan las distintas aplicaciones de la marca: desde las etiquetas y los empaques hasta su comunicación digital.", concept: "El logotipo une una tipografía de trazos elegantes con un símbolo que evoca las formas de una concha y el movimiento del agua. Las ondas, el monograma y los pequeños destellos construyen un lenguaje visual reconocible, que acompaña a la marca con sutileza y carácter.", role: "Diseño de identidad visual y aplicaciones en empaques, etiquetas, papelería y piezas para redes sociales. Proyecto individual.",
+ collaborators: null, software: ['Illustrator', 'Photoshop'] as const,
+ gallery: [{ image: sereia1, alt: "Etiquetas SEREIA en terracota junto a un traje de baño y conchas", caption: "El detalle que acompaña cada prenda.", wide: true },
+{ image: sereia2, alt: "Bolsa SEREIA en tonos arena y verde con ondas y un patrón de monogramas", caption: "Una identidad para llevar.", wide: false },
+{ image: sereia3, alt: "Caja SEREIA abierta con papel estampado y sello de la marca", caption: "El empaque como parte de la experiencia.", wide: false },
+{ image: sereia4, alt: "Papel de seda con el monograma y destellos de SEREIA en verde", caption: "Un patrón con ritmo propio.", wide: false },
+{ image: sereia5, alt: "Anverso y reverso de una tarjeta de regalo SEREIA en verde y crema", caption: "La marca en un gesto de regalo.", wide: false },
+{ image: sereia6, alt: "Publicación de expectativa de SEREIA en un teléfono con la frase Algo está tomando forma", caption: "El universo visual en redes sociales.", wide: false },
+{ image: sereia7, alt: "Publicación de SEREIA en un teléfono con una mujer en traje de baño junto al mar", caption: "Una invitación a descubrir la colección.", wide: false }],
+}, {
+ slug: 'dolus-divinus', name: 'Dolus Divinus', logo: DolusLogo,
+ color: '#171717', ink: '#171717', panelInk: '#FBF3E7',
+ category: 'Diseño editorial e ilustración',
+ storyLead: "Fragmentos que", storyTitle: "construyen lo inquietante.",
+ conceptLead: "Entre lo sagrado", conceptTitle: "y lo inquietante.",
+ galleryLead: "Un imaginario", galleryTitle: "entre páginas.",
+ title: "Fragmentos que construyen lo inquietante.", cover: dolus0, coverAlt: "Portada y contraportada de Dolus Divinus en negro y dorado, entre velas y elementos góticos",
+ description: "Dolus Divinus es un libro de creación colectiva que explora el encuentro entre el cadáver exquisito y la estética gótica. A través de fragmentos literarios e ilustraciones, construye un universo de personajes enigmáticos, símbolos y escenas que desdibujan los límites entre lo humano y lo divino. La propuesta editorial combina tipografía gótica, marcos ornamentales y una paleta de tonos oscuros, acentos dorados y fondos cálidos. Texto e imagen dialogan en cada doble página, dando unidad visual a las distintas aportaciones del equipo.", concept: "Arcos, miradas y figuras imposibles componen un imaginario cargado de misterio. La fragmentación de las palabras y las composiciones surrealistas trasladan el espíritu del cadáver exquisito al diseño del libro, invitando a descubrir conexiones inesperadas entre la escritura y la ilustración.", role: "Desarrollo del concepto visual, ilustración y diagramación editorial. Definición de composiciones, jerarquías tipográficas y recursos gráficos para integrar texto e imagen dentro de una estética común.",
+ collaborators: "Proyecto realizado en equipo con Camila Ospina y Karen Gallego.", software: ['Illustrator'] as const,
+ gallery: [{ image: dolus1, alt: "Doble página de Dolus Divinus con texto fragmentado y un personaje vestido de negro ante un castillo", caption: "Palabras e imágenes en una atmósfera gótica.", wide: false },
+{ image: dolus2, alt: "Doble página de Dolus Divinus con manos doradas, un ojo y formas geométricas", caption: "Lo imposible toma forma en la ilustración.", wide: false },
+{ image: dolus3, alt: "Doble página de Dolus Divinus con un personaje de capa roja y negra frente a una multitud", caption: "Personajes que habitan el relato colectivo.", wide: false },
+{ image: dolus4, alt: "Doble página de Dolus Divinus con una figura de rostro rectangular y vestiduras blancas y violetas", caption: "Fragmentos unidos por un lenguaje visual.", wide: false }],
 }];
 
 export function getProjects(lang: Language) {
