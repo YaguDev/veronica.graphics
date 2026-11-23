@@ -10,10 +10,10 @@ export function translator(lang: Language) {
   };
 }
 export function localizedPath(path: string, lang: Language): string {
-  const base = path.replace(/^\/en(?=\/|$)/, '').replace(/^\/projects(?=\/|$)/, '/proyectos') || '/';
-  return lang === 'es' ? base : '/en' + base.replace(/^\/proyectos(?=\/|$)/, '/projects');
+  const base = path.replace(/^\/en(?=\/|$)/, '').replace(/^\/projects(?=\/|$)/, '/proyectos').replace(/^\/about(?=\/|$)/, '/sobre-mi') || '/';
+  return lang === 'es' ? base : '/en' + base.replace(/^\/proyectos(?=\/|$)/, '/projects').replace(/^\/sobre-mi(?=\/|$)/, '/about');
 }
 export function i18n(url: URL) {
   const lang = languageFromPath(url.pathname);
-  return { lang, t: translator(lang), home: lang === 'en' ? '/en/' : '/', projectPath: (slug: string) => lang === 'en' ? '/en/projects/' + slug + '/' : '/proyectos/' + slug + '/' };
+  return { lang, about: lang === 'en' ? '/en/about/' : '/sobre-mi/', t: translator(lang), home: lang === 'en' ? '/en/' : '/', projectPath: (slug: string) => lang === 'en' ? '/en/projects/' + slug + '/' : '/proyectos/' + slug + '/' };
 }

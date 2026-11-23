@@ -1,0 +1,38 @@
+---
+import { i18n } from '../i18n';
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import Header from './Header.astro';
+import About from './About.astro';
+import Contact from './Contact.astro';
+import LanguageLinks from './LanguageLinks.astro';
+const { lang, t } = i18n(Astro.url);
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={t('Estudiante de Diseño Gráfico interesada en la comunicación visual y en explorar diferentes áreas del diseño.')} />
+    <meta name="theme-color" content="#FBF3E7" />
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+    <link rel="stylesheet" href="https://use.typekit.net/nrn4nwk.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=editorial" />
+    <title>{t('Sobre mí')} — {t('Verónica · Diseño gráfico')}</title>
+    <ClientRouter />
+    <LanguageLinks />
+  </head>
+  <body class="about-page" id="inicio">
+    <a class="skip-link" href="#contenido">{t('Saltar al contenido')}</a>
+    <Header />
+    <main id="contenido" tabindex="-1"><About standalone /></main>
+    <Contact />
+    <script>import '../scripts/animations';</script>
+  </body>
+</html>
+<style>
+  .about-page { background: var(--cream); }
+  .about-page :global(.site-header) { color: var(--red-ink); }
+  main { padding-top: 110px; }
+  @media (max-width: 600px) { main { padding-top: 140px; } }
+</style>

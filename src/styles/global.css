@@ -9,6 +9,7 @@
   --ink: #342d29;
   --muted: #645b52;
   --red-ink: #b73224;
+  --font-heading: 'minion-pro', Georgia, serif;
   --font-editorial: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Inter Variable', Arial, sans-serif;
   --page-gutter: clamp(24px, 4.5vw, 86px);

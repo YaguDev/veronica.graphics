@@ -1,3 +1,25 @@
+import RivaLogo from '../assets/projects/riva/logo.svg';
+import rivaCover from '../assets/projects/riva/banner.webp';
+import riva0 from '../assets/projects/riva/estampado-textil.webp';
+import riva1 from '../assets/projects/riva/patron-de-estampado.webp';
+import riva2 from '../assets/projects/riva/panoleta-001.webp';
+import riva3 from '../assets/projects/riva/producto-001.webp';
+import riva4 from '../assets/projects/riva/producto-002.webp';
+import riva5 from '../assets/projects/riva/producto-003.webp';
+import riva6 from '../assets/projects/riva/producto-004.webp';
+import riva7 from '../assets/projects/riva/vitrina.webp';
+import riva8 from '../assets/projects/riva/instagram-001.webp';
+import riva9 from '../assets/projects/riva/instagram-002.webp';
+import riva10 from '../assets/projects/riva/web-001.webp';
+import riva11 from '../assets/projects/riva/web-002.webp';
+import riva12 from '../assets/projects/riva/web-003.webp';
+import riva13 from '../assets/projects/riva/web-004.webp';
+import CaminoLogo from '../assets/projects/camino-a-la-esperanza/logo.svg';
+import camino0 from '../assets/projects/camino-a-la-esperanza/banner.webp';
+import camino1 from '../assets/projects/camino-a-la-esperanza/piezas-del-juego-001.webp';
+import camino2 from '../assets/projects/camino-a-la-esperanza/caja-001.webp';
+import camino3 from '../assets/projects/camino-a-la-esperanza/tablero-de-juego-001.webp';
+import camino4 from '../assets/projects/camino-a-la-esperanza/laberinto-del-juego-001.webp';
 import DolusLogo from '../assets/projects/dolus-divinus/logo.svg';
 import dolus0 from '../assets/projects/dolus-divinus/banner.webp';
 import dolus1 from '../assets/projects/dolus-divinus/libro-001-afad7824.webp';
@@ -48,6 +70,38 @@ import polo from '../assets/projects/amaranto/mockup-3.webp';
 import aprons from '../assets/projects/amaranto/mockup-4.webp';
 
 export const projects = [{
+  slug: 'riva', name: 'RIVA', featured: true, logo: RivaLogo,
+  color: '#E8D5CD', ink: '#49372F', panelInk: '#49372F', logoInk: '#49372F',
+  cover: rivaCover, collaborators: null, software: ['Illustrator', 'Photoshop', 'Procreate'] as const,
+  category: "Identidad visual y diseño textil",
+  title: "Naturaleza que viste tu esencia.",
+  storyLead: "Una identidad",
+  storyTitle: "que florece en la tela.",
+  conceptLead: "Del trazo",
+  conceptTitle: "al estampado.",
+  galleryLead: "Un universo natural,",
+  galleryTitle: "hecho para vestir.",
+  coverAlt: "Estampado RIVA con felinos, flores y hojas sobre un fondo cálido, con el logotipo de la marca",
+  description: "RIVA es una marca de moda femenina que encuentra en la naturaleza el origen de su identidad. Dirigida a mujeres de 25 a 45 años, propone prendas con estampados propios creados por Verónica, donde animales y plantas se encuentran en composiciones llenas de detalle. El proyecto conecta la identidad visual con el diseño textil: los tonos suaves, las formas orgánicas y el contraste entre la delicadeza de las flores y la presencia de los felinos construyen un lenguaje que se extiende a las prendas, los accesorios y la comunicación de la marca.",
+  concept: "La ilustración es el punto de partida de RIVA. Felinos, flores y follaje se entrelazan en un patrón que transforma cada superficie en una composición con ritmo y movimiento. El rosa suave de la identidad acompaña los verdes y tonos tierra del estampado, mientras el logotipo de líneas elegantes aporta equilibrio. Así, el universo natural de la marca mantiene una misma voz en el textil, la vitrina y los medios digitales.",
+  role: "Creación de estampados originales inspirados en animales y plantas, diseño textil y desarrollo de la identidad visual y sus aplicaciones. Proyecto individual.",
+  gallery: [
+    { image: riva0, alt: "Estampado RIVA con felinos entre flores y hojas", caption: "La naturaleza como punto de partida.", wide: true },
+    { image: riva1, alt: "Patrón textil de RIVA con motivos animales y botánicos repetidos", caption: "Un patrón que encuentra su ritmo.", wide: false },
+    { image: riva2, alt: "Pañoleta RIVA con estampado botánico y de felinos", caption: "El estampado en los pequeños detalles.", wide: false },
+    { image: riva3, alt: "Falda larga RIVA con estampado de flores y felinos", caption: "Movimiento y naturaleza en una prenda.", wide: false },
+    { image: riva4, alt: "Conjunto RIVA de blusa y pantalón con estampado natural", caption: "Un mismo lenguaje, de pies a cabeza.", wide: false },
+    { image: riva5, alt: "Vestido de tirantes RIVA con estampado floral y animal", caption: "Formas ligeras, identidad propia.", wide: false },
+    { image: riva6, alt: "Vestido largo RIVA con estampado de flores, hojas y felinos", caption: "El patrón acompaña la silueta.", wide: false },
+    { image: riva7, alt: "Vitrina de RIVA con prendas estampadas, plantas y el logotipo iluminado", caption: "El universo de la marca toma espacio.", wide: true },
+    { image: riva8, alt: "Publicación de RIVA con una modelo y el mensaje Estampados que visten tu esencia", caption: "Una voz propia en redes sociales.", wide: false },
+    { image: riva9, alt: "Ilustración del estampado de RIVA en una tableta digital", caption: "El proceso creativo también cuenta una historia.", wide: false },
+    { image: riva10, alt: "Diseño de la página de inicio de la tienda digital RIVA", caption: "La primera mirada al universo RIVA.", wide: true },
+    { image: riva11, alt: "Diseño de las categorías de ropa y accesorios de RIVA", caption: "Una colección para explorar.", wide: false },
+    { image: riva12, alt: "Diseño del catálogo de prendas estampadas de RIVA", caption: "Cada prenda, una expresión del estampado.", wide: false },
+    { image: riva13, alt: "Diseño del carrito de compra de la tienda RIVA", caption: "La identidad acompaña toda la experiencia.", wide: true },
+  ],
+}, {
   slug: 'amaranto',
   logo: AmarantoLogo,
   color: '#7f1715',
@@ -220,11 +274,26 @@ export const projects = [{
 { image: dolus2, alt: "Doble página de Dolus Divinus con manos doradas, un ojo y formas geométricas", caption: "Lo imposible toma forma en la ilustración.", wide: false },
 { image: dolus3, alt: "Doble página de Dolus Divinus con un personaje de capa roja y negra frente a una multitud", caption: "Personajes que habitan el relato colectivo.", wide: false },
 { image: dolus4, alt: "Doble página de Dolus Divinus con una figura de rostro rectangular y vestiduras blancas y violetas", caption: "Fragmentos unidos por un lenguaje visual.", wide: false }],
+}, {
+ slug: 'camino-a-la-esperanza', name: 'Camino a la Esperanza', logo: CaminoLogo,
+ color: '#023955', ink: '#023955', panelInk: '#FBF3E7',
+ category: "Diseño de juego de mesa",
+ storyLead: "Un recorrido", storyTitle: "hacia la esperanza.",
+ conceptLead: "Cada paso,", conceptTitle: "una posibilidad.",
+ galleryLead: "Del laberinto", galleryTitle: "al faro.",
+ title: "Cada paso, una posibilidad.", cover: camino0, coverAlt: "Caja ilustrada, tablero y piezas de Camino a la Esperanza en un escenario urbano en ruinas",
+ description: "Camino a la Esperanza es un juego de mesa inspirado en la película Niños del Hombre. Su propuesta transforma la búsqueda de un destino en un recorrido sobre un tablero cuadriculado, situado encima de una caja con un laberinto. El dado determina cuántos pasos avanzar y el objetivo es llegar desde el punto de inicio hasta el faro. La ilustración, las texturas desgastadas y los tonos azul profundo construyen una atmósfera de incertidumbre en la que cada movimiento representa una nueva posibilidad de continuar.", concept: "El laberinto representa los obstáculos del camino y el faro ofrece un punto de orientación. En el símbolo del proyecto, estas formas se reúnen con una figura que sostiene a un bebé y una embarcación sobre las olas. La propuesta visual conecta el recorrido del juego con una idea de protección, resistencia y esperanza, que se extiende al empaque, el tablero y sus piezas.", role: "Desarrollo del proyecto de juego de mesa y su propuesta visual. Trabajo individual.",
+ collaborators: null, software: ['Illustrator', 'Photoshop'] as const,
+ gallery: [{ image: camino1, alt: "Juego Camino a la Esperanza desplegado con caja abierta, laberinto, tablero, dado y fichas", caption: "Las piezas de un mismo recorrido.", wide: true },
+{ image: camino2, alt: "Caja de Camino a la Esperanza con personajes ilustrados sobre un fondo azul y rojo", caption: "El empaque introduce la historia.", wide: false },
+{ image: camino3, alt: "Tablero cuadriculado de Camino a la Esperanza con dos personajes, un dado y un faro rojo y blanco", caption: "Un destino que guía cada movimiento.", wide: false },
+{ image: camino4, alt: "Dos vistas de la estructura negra del laberinto situado bajo el tablero", caption: "La estructura detrás del desafío.", wide: true }],
 }];
 
 export function getProjects(lang: Language) {
   const t = translator(lang);
   return projects.map(project => ({ ...project,
+    featured: project.featured === true,
     category: t(project.category), title: t(project.title), coverAlt: t(project.coverAlt),
     storyLead: t(project.storyLead), storyTitle: t(project.storyTitle),
     conceptLead: t(project.conceptLead), conceptTitle: t(project.conceptTitle), concept: t(project.concept),

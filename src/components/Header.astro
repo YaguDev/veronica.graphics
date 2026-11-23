@@ -1,12 +1,12 @@
 ---
 import { i18n, localizedPath } from '../i18n';
-const { lang, t, home, projectPath } = i18n(Astro.url);
+const { lang, t, home, about, projectPath } = i18n(Astro.url);
 import ArrowUpRight from '@gravity-ui/icons/svgs/arrow-up-right.svg';
 ---
 <header class="site-header">
   <a class="brand" href={home + "#inicio"} aria-label={t("Verónica — Inicio")}>Verónica<span aria-hidden="true">.</span></a>
   <nav aria-label={t("Navegación principal")}>
-    <a href={home + "#sobre-mi"}>{t("Sobre mí")}</a>
+    <a href={about}>{t("Sobre mí")}</a>
     <a href={home + "#proyectos"}>{t("Proyectos")}</a>
     <a class="button-outline" href={home + "#contacto"}>{t("Contacto")} <ArrowUpRight width="13" height="13" aria-hidden="true" /></a>
   </nav>
