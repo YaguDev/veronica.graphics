@@ -1,0 +1,40 @@
+---
+import { i18n } from '../i18n';
+import BrandIcon from './BrandIcon.astro';
+import Text from '@gravity-ui/icons/svgs/text.svg';
+const { t } = i18n(Astro.url);
+const courses = [
+  { title: 'Introducción a Adobe Photoshop', description: 'Herramientas y edición de imágenes.', icon: 'Photoshop' },
+  { title: 'Photoshop avanzado', description: 'Edición y retoque avanzado.', icon: 'Photoshop' },
+  { title: 'Secretos del fotomontaje y el retoque creativo', description: 'Composición y retoque creativo.', icon: 'Photoshop' },
+  { title: 'Adobe Illustrator para diseño gráfico', description: 'Ilustración y diseño vectorial.', icon: 'Illustrator' },
+  { title: 'Introducción a Procreate', description: 'Dibujo y pintura digital.', icon: 'Procreate' },
+  { title: 'Adobe InDesign: desde cero a avanzado', description: 'Diagramación y diseño editorial.', icon: 'InDesign' },
+  { title: 'Tipografía aplicada a proyectos impresos y digitales', description: 'Composición y jerarquía tipográfica.', icon: 'typography' },
+  { title: 'Introducción a After Effects', description: 'Fundamentos de animación digital.', icon: 'AfterEffects' },
+] as const;
+---
+<section class="studies" aria-labelledby="studies-title">
+  <div class="studies__inner">
+    <h3 id="studies-title" data-reveal>{t('Estudios complementarios')}</h3>
+    <ul>
+      {courses.map(course => (
+        <li data-reveal>
+          <span class="studies__icon" aria-hidden="true">
+            {course.icon === 'typography' ? <Text width="22" height="22" /> : <BrandIcon name={course.icon} size={26} />}
+          </span>
+          <div><h4>{t(course.title)}</h4><p>{t(course.description)}</p></div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+<style>
+  h3 { font: 400 36px/1.1 var(--font-heading); color: var(--red); margin: 0 0 20px; letter-spacing: -.025em; }
+  ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 24px; list-style: none; padding: 0; margin: 0; }
+  li { display: flex; align-items: start; gap: 10px; }
+  .studies__icon { width: 26px; height: 26px; display: grid; place-items: center; flex-shrink: 0; color: var(--red-ink); margin-top: 2px; }
+  h4 { font: 500 12px/1.6 var(--font-body); margin: 0; }
+  p { font: 400 12px/1.6 var(--font-body); color: var(--muted); margin: 3px 0 0; }
+  @media (max-width: 700px) { ul { gap: 20px 16px; } li { flex-direction: column; gap: 8px; } h3 { font-size: 32px; } }
+</style>

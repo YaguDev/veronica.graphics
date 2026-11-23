@@ -1,4 +1,5 @@
 ---
+import AfterEffects from '../assets/icons/after-effects.svg';
 import Photoshop from '../assets/icons/photoshop.svg';
 import Illustrator from '../assets/icons/illustrator.svg';
 import InDesign from '../assets/icons/indesign.svg';
@@ -6,7 +7,7 @@ import Procreate from '../assets/icons/procreate.svg';
 import Instagram from '../assets/icons/instagram.svg';
 import Behance from '../assets/icons/behance.svg';
 import Correo from '../assets/icons/correo.svg';
-const icons = { Photoshop, Illustrator, InDesign, Procreate, Instagram, Behance, Correo };
+const icons = { AfterEffects, Photoshop, Illustrator, InDesign, Procreate, Instagram, Behance, Correo };
 interface Props { name: keyof typeof icons; size?: number; }
 const { name, size = 20 } = Astro.props;
 const Icon = icons[name];
