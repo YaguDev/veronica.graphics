@@ -1,6 +1,6 @@
 # Portafolio de Verónica
 
-Portafolio editorial con Astro, CSS y GSAP. Salida estática para xCloud (`dist/`).
+Portafolio editorial con Astro, CSS y GSAP. Páginas prerenderizadas y API de contacto con Node para xCloud.
 
 ## Desarrollo
 
@@ -30,6 +30,20 @@ La pantalla de carga aparece una vez por sesión (clave `veronica-editorial-intr
 
 ## xCloud
 
-Rama `main`, modo **Static build**, Web Root `dist`, Node.js >=22.12.0. El script de despliegue ejecuta `npm ci --include=dev` y `npm run build`. Este rediseño no necesita un proceso Node en producción.
+Rama `main`, aplicación **Node.js** (ya no Static build), Node.js >=22.12.0. Build: `npm ci --include=dev` y `npm run build`. Inicio: `npm start`, desde la raíz del proyecto, donde está `.env`. El proxy de xCloud debe dirigir todo el tráfico al puerto `PORT` de Node, que sirve `dist/client` y la API desde `dist/server/entry.mjs`. No publicar la raíz del repositorio ni el archivo `.env`.
 
 Las flechas e iconos de interfaz usan SVG de @gravity-ui/icons. Hojas-002 decora el borde superior de la portada en escritorio. El loader alterna Flor-003, Flor-004 y Flor-005 cada 0,6 segundos, con copias WebP de 360 px; la animación se detiene al cerrar el loader y respeta la reducción de movimiento.
+
+## Formulario de contacto
+
+Copiar las variables de .env.example al archivo .env de xCloud. No subir .env a Git. Reiniciar Node después de cambiar variables; la site key se obtiene en tiempo de ejecución, sin recompilar.
+
+- SITE_ORIGIN: origen público exacto, por ejemplo https://veronica.graphics (sin ruta). En local: http://localhost:4321.
+- PUBLIC_TURNSTILE_SITE_KEY y TURNSTILE_SECRET_KEY: claves del mismo widget. Autorizar el dominio en Cloudflare. La secret key solo se usa en el servidor.
+- SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS: datos del proveedor SMTP. Para puerto 465 usar SMTP_SECURE=true; para 587 usar false (STARTTLS obligatorio).
+- CONTACT_FROM: remitente autorizado por el proveedor SMTP. CONTACT_TO: destinatario de los mensajes. El correo del visitante se usa en Reply-To.
+- HOST=0.0.0.0 y PORT: puerto asignado a la aplicación en xCloud.
+
+No basta con añadir un .env a un alojamiento estático: xCloud debe ejecutar el proceso Node. El modal mantiene deshabilitado el envío hasta completar Turnstile. La API valida origen, tamaño, campos, hostname y acción del token antes de enviar. Los errores no revelan credenciales.
+
+Validación: npm test y npm run build. Para la comprobación real, configurar las claves y SMTP y enviar un mensaje de prueba desde el dominio autorizado.

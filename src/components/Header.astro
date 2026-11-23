@@ -1,14 +1,16 @@
 ---
 import { i18n, localizedPath } from '../i18n';
 const { lang, t, home, about, projectPath } = i18n(Astro.url);
+import VeronicaLogo from '../assets/brand/logo-veronica.svg';
+import ContactModal from './ContactModal.astro';
 import ArrowUpRight from '@gravity-ui/icons/svgs/arrow-up-right.svg';
 ---
 <header class="site-header">
-  <a class="brand" href={home + "#inicio"} aria-label={t("Verónica — Inicio")}>Verónica<span aria-hidden="true">.</span></a>
+  <a class="brand" href={home + "#inicio"} aria-label={t("Verónica — Inicio")}><VeronicaLogo aria-hidden="true" focusable="false" /></a>
   <nav aria-label={t("Navegación principal")}>
     <a href={about}>{t("Sobre mí")}</a>
     <a href={home + "#proyectos"}>{t("Proyectos")}</a>
-    <a class="button-outline" href={home + "#contacto"}>{t("Contacto")} <ArrowUpRight width="13" height="13" aria-hidden="true" /></a>
+    <a class="button-outline" data-contact-open href={home + "#contacto"}>{t("Contacto")} <ArrowUpRight width="13" height="13" aria-hidden="true" /></a>
   </nav>
   <div class="language-switch" role="group" aria-label={lang === 'es' ? 'Idioma' : 'Language'}>
     {(['es', 'en'] as const).map(locale => locale === lang
@@ -16,6 +18,7 @@ import ArrowUpRight from '@gravity-ui/icons/svgs/arrow-up-right.svg';
       : <a data-language-link href={localizedPath(Astro.url.pathname, locale)} hreflang={locale} lang={locale} aria-label={locale === 'en' ? 'Switch to English' : 'Cambiar a español'}>{locale.toUpperCase()}</a>)}
   </div>
 </header>
+<ContactModal />
 <script>
   function syncLanguageLinks() {
     document.querySelectorAll<HTMLAnchorElement>('[data-language-link]').forEach(link => {
@@ -31,7 +34,8 @@ import ArrowUpRight from '@gravity-ui/icons/svgs/arrow-up-right.svg';
   .language-switch a, .language-switch span { display: grid; place-items: center; min-width: 36px; min-height: 36px; border-radius: 999px; }
   .language-switch__active { background: color-mix(in srgb, currentColor 18%, transparent); font-weight: 650; }
   .language-switch a:hover { text-decoration: underline; text-underline-offset: 4px; }
-  .brand { font: 500 36px/1 var(--font-editorial); letter-spacing: -.05em; }
+  .brand { display: inline-flex; flex-shrink: 0; width: 150px; }
+  .brand :global(svg) { display: block; width: 100%; height: auto; }
   nav { margin-left: auto; display: flex; align-items: center; gap: clamp(24px, 3.5vw, 56px); }
   nav a { font-size: 14px; padding-block: 12px; white-space: nowrap; }
   nav a :global(svg) { vertical-align: middle; }
@@ -39,11 +43,11 @@ import ArrowUpRight from '@gravity-ui/icons/svgs/arrow-up-right.svg';
   nav a:not(.button-outline):hover::after, nav a:not(.button-outline):focus-visible::after { transform: scaleX(1); }
   @media (max-width: 600px) {
     .site-header { min-height: 114px; gap: 10px; padding: 12px 20px; flex-wrap: wrap; }
-    .brand { font-size: 27px; }
+    .brand { width: 125px; }
     .language-switch { margin-left: auto; }
     nav { order: 3; width: 100%; justify-content: space-between; gap: 12px; }
     nav .button-outline { padding-inline: 8px; gap: 5px; }
     nav a { font-size: 11px; }
   }
-  @media (max-width: 360px) { .brand { font-size: 25px; } nav { gap: 8px; } nav a { font-size: 11px; } }
+  @media (max-width: 360px) { .brand { width: 115px; } nav { gap: 8px; } nav a { font-size: 11px; } }
 </style>
